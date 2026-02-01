@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InvestIQ - Market Intelligence</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    
+    <!-- Ticker Tape -->
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <!-- Ticker items will be injected here via JS -->
+        <div class="ticker__item">S&P 500 <span class="text-green">...</span></div>
+        <div class="ticker__item">NASDAQ <span class="text-green">...</span></div>
+        <div class="ticker__item">DAX <span class="text-red">...</span></div>
+      </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="main-header">
+      <div class="container header-inner">
+        <div class="logo">InvestIQ</div>
+        <nav class="main-nav">
+          <a href="#" class="active">News</a>
+          <a href="#" id="markets-link">Markets</a>
+          <a href="#" id="analysis-link">Analysis</a>
+        </nav>
+        <div class="header-actions">
+          <button id="settings-btn" class="btn btn-outline">Settings</button>
+          <button id="refresh-btn" class="btn btn-primary">Refresh Data</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="container dashboard-grid">
+      
+      <!-- Left Column: News Feed -->
+      <section class="news-section">
+        <div class="section-header">
+          <h2>Latest Market News</h2>
+          <span class="badg user-tag">Live</span>
+        </div>
+        <div id="news-grid" class="news-grid">
+          <!-- News Cards injected here -->
+          <div class="card news-card skeleton"></div>
+          <div class="card news-card skeleton"></div>
+          <div class="card news-card skeleton"></div>
+          <div class="card news-card skeleton"></div>
+        </div>
+      </section>
+
+      <!-- Right Column: Analysis & Data -->
+      <aside class="sidebar-section">
+        
+        <!-- Gemini Analysis Widget -->
+        <div class="card analysis-card">
+          <div class="card-header">
+            <h3>AI Investment Insight</h3>
+            <span id="ai-status" class="status-dot"></span>
+          </div>
+          <div id="ai-content" class="card-body">
+            <p class="text-muted">Click "Refresh Data" to generate new investment insights based on current news.</p>
+          </div>
+        </div>
+
+        <!-- Market Movers / Economic Calendar Widget -->
+        <div class="card market-widget">
+          <div class="card-header">
+            <h3>Economic Events</h3>
+          </div>
+          <div id="calendar-list" class="list-group">
+            <!-- Calendar items injected here -->
+            <div class="list-item skeleton"></div>
+            <div class="list-item skeleton"></div>
+          </div>
+        </div>
+
+      </aside>
+
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Configuration</h3>
+          <button id="close-modal" class="btn-icon">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="settings-form">
+            <div class="form-group">
+              <label>Active News Sources</label>
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="source" value="wsj" checked> Wall Street Journal</label>
+                <label><input type="checkbox" name="source" value="reuters" checked> Reuters</label>
+                <label><input type="checkbox" name="source" value="yahoo" checked> Yahoo Finance</label>
+                <label><input type="checkbox" name="source" value="bloomberg" checked> Bloomberg</label>
+              </div>
+            </div>
+            <!-- API Key is handled environment variables, but maybe allow local override? 
+                 Decided to keep it strictly backend env for security as per user request. -->
+             <p class="text-sm text-muted">API Keys are managed securely via Vercel Environment Variables.</p>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="save-settings" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
