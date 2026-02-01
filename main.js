@@ -1,5 +1,5 @@
-import { initUI } from './app/ui.js'
-import { loadConfig } from './app/config.js'
+import { initUI } from './src_modules/ui.js'
+import { loadConfig } from './src_modules/config.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('InvestIQ Initializing...');
